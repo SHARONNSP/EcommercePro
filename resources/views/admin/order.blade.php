@@ -49,16 +49,19 @@
 
             <table class="table_deg">
                 <tr class="th_deg">
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Address</th>
-                    <th>Phone</th>
-                    <th>Product_title</th>
-                    <th>Qauntity</th>
-                    <th>Price</th>
-                    <th>Payment Status</th>
-                    <th>Delivery Status</th>
-                    <th>Iamge</th>
+                    <th style="padding: 10px;">Name</th>
+                    <th style="padding: 10px;">Email</th>
+                    <th style="padding: 10px;">Address</th>
+                    <th style="padding: 10px;">Phone</th>
+                    <th style="padding: 10px;">Product_title</th>
+                    <th style="padding: 10px;">Qauntity</th>
+                    <th style="padding: 10px;">Price</th>
+                    <th style="padding: 10px;">Payment Status</th>
+                    <th style="padding: 10px;">Delivery Status</th>
+                    <th style="padding: 10px;">Iamge</th>
+                    <th style="padding: 10px;">Delivered</th>
+                    <th style="padding: 10px;">Print PDF</th>
+                    <th style="padding: 10px;">Send Email</th>
                 </tr>
 
                 @foreach ($order as $order)
@@ -74,6 +77,22 @@
                     <td>{{ $order->delivery_status }}</td>
                     <td>
                         <img class="img_size" src="/product{{ $order->image }}">
+                    </td>
+                    <td>
+                        @if ($order->delivery_status=='processing')
+                            <a href="{{ url('delivered', $order->id) }}" onclick="return confirm('Are you sure this product is delivered?')" class="btn btn-primary">Delivered</a>
+
+                        @else
+                            <p style="color: yellow;">Delivered Successful</p>
+                        @endif
+                    </td>
+
+                    <td>
+                        <a href="{{ url('print_pdf', $order->id) }}" class="btn btn-secondary">Print PDF</a>
+                    </td>
+
+                    <td>
+                        <a href="{{ url('send_email',$order->id) }}" class="btn btn-info">Send Email</a>
                     </td>
                 </tr>
                 @endforeach
