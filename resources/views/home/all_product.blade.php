@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <!-- Basic -->
-      <meta charset="utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <!-- Mobile Metas -->
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      <!-- Site Metas -->
-      <meta name="keywords" content="" />
-      <meta name="description" content="" />
-      <meta name="author" content="" />
-      <link rel="shortcut icon" href="images/favicon.png" type="">
-      <title>Famms - Fashion HTML Template</title>
-      <!-- bootstrap core css -->
-      <link rel="stylesheet" type="text/css" href="{{asset('home/css/bootstrap.css')}}" />
-      <!-- font awesome style -->
-      <link href="{{asset('home/css/font-awesome.min.css')  }}" rel="stylesheet" />
-      <!-- Custom styles for this template -->
-      <link href="{{asset('home/css/style.css')  }}" rel="stylesheet" />
-      <!-- responsive style -->
-      <link href="{{asset('home/css/responsive.css')  }}" rel="stylesheet" />
+     <!-- Basic -->
+     <meta charset="utf-8" />
+     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <!-- Mobile Metas -->
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+     <!-- Site Metas -->
+     <meta name="keywords" content="" />
+     <meta name="description" content="" />
+     <meta name="author" content="" />
+     <link rel="shortcut icon" href="images/favicon.png" type="">
+     <title>Famms - Fashion HTML Template</title>
+     <!-- bootstrap core css -->
+     <link rel="stylesheet" type="text/css" href="{{asset('home/css/bootstrap.css')}}" />
+     <!-- font awesome style -->
+     <link href="{{asset('home/css/font-awesome.min.css')  }}" rel="stylesheet" />
+     <!-- Custom styles for this template -->
+     <link href="{{asset('home/css/style.css')  }}" rel="stylesheet" />
+     <!-- responsive style -->
+     <link href="{{asset('home/css/responsive.css')  }}" rel="stylesheet" />
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
       integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
       crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -30,20 +30,19 @@
     @include('home.header')
     <!-- end header section strats -->
 
-         <!-- slider section -->
-    @include('home.slider-section')
-         <!-- end slider section -->
-      </div>
-      <!-- why section -->
-    @include('home.why')
-      <!-- end why section -->
+    @if (session()->has('message'))
 
-      <!-- arrival section -->
-    @include('home.arrival')
-      <!-- end arrival section -->
+    <div class="alert alert-success">
+
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+
+        {{ session()->get('message') }}
+    </div>
+
+    @endif
 
       <!-- product section -->
-    @include('home.product')
+    @include('home.product_view')
       <!-- end product section -->
 
     <!-- Comment and reply system start here -->
@@ -126,23 +125,6 @@
 
    <!-- Comment and reply system end here -->
 
-      <!-- subscribe section -->
-    @include('home.subscribe')
-      <!-- end subscribe section -->
-
-      <!-- client section -->
-    @include('home.client')
-      <!-- end client section -->
-
-      <!-- footer start -->
-    @include('home.footer')
-      <!-- footer end -->
-      <div class="cpy_">
-         <p class="mx-auto">© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a><br>
-
-            Distributed By <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
-
-         </p>
       </div>
 
       <script type="text/javascript">

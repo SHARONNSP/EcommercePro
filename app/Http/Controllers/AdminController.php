@@ -8,25 +8,44 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Notification;
+use Illuminate\Support\Facades\Auth;
 use App\Notifications\SendEmailNotification;
 
 class AdminController extends Controller
 {
     public function view_category()
     {
-        $data = category::all();
+        if(Auth::id())
+        {
+            $data = category::all();
 
         return view('admin.category', compact('data'));
+        }
+
+        else
+        {
+            return redirect('login');
+        }
+
     }
 
     public function add_category(Request $request)
     {
-        $data=new category;
-        $data->category_name=$request->category;
+        if(Auth::id())
+        {
+            $data=new category;
+            $data->category_name=$request->category;
 
-        $data->save();
+            $data->save();
 
-        return redirect()->back()->with('message', 'Category Added Successfully');
+            return redirect()->back()->with('message', 'Category Added Successfully');
+        }
+
+        else
+        {
+            return redirect('login');
+        }
+
     }
 
     public function delete_category($id)

@@ -62,5 +62,8 @@ route::get('/show_order', [HomeController::class,'show_Order']);
 route::get('/cancel_order/{id}', [HomeController::class,'cancel_Order']);
 route::post('/add_comment', [HomeController::class,'add_comment']);
 route::post('/add_reply', [HomeController::class,'add_reply']);
+route::get('/product_search', [HomeController::class,'product_search']);
+route::get('/products', [HomeController::class,'products']);
+route::get('/search_product', [HomeController::class,'search_product']);
 
 
